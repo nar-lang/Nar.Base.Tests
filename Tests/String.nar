@@ -3,43 +3,43 @@ module Tests.Nar.Base.String
 def tests: Test =
   describe("String") <|
     [ describe("Simple Stuff") <|
-      [ test("is empty") <| \( () ) -> Expect.equal(True, String.isEmpty(""))
-      , test("is not empty") <| \( () ) -> Expect.equal(True, not(String.isEmpty("the world")))
-      , test("length") <| \( () ) -> Expect.equal(11, String.length("innumerable"))
-      , test("startsWith") <| \( () ) -> Expect.equal(True, String.startsWith("space", "spaceship"))
-      , test("endsWith") <| \( () ) -> Expect.equal(True, String.endsWith("ship", "spaceship"))
-      , test("reverse") <| \( () ) -> Expect.equal("desserts", String.reverse("stressed"))
-      , test("repeat") <| \( () ) -> Expect.equal("hahaha", String.repeat(3, "ha"))
-      , test("indices") <| \( () ) -> Expect.equal([ 0, 1, 4 ], String.indices("aa", "aaahaa"))
-      , test("empty indices") <| \( () ) -> Expect.equal([], String.indices("", "aha"))
-      , test("\"hello\" <> \"world\"") <| \( () ) -> Expect.equal("helloworld", "hello" <> "world")
-      , test("toUpper") <| \( () ) -> Expect.equal("HELLO", String.toUpper("hello"))
-      , test("toLower") <| \( () ) -> Expect.equal("hello", String.toLower("HELLO"))
-      , test("trim 1") <| \( () ) -> Expect.equal("hello", String.trim("  hello  "))
-      , test("trim 2") <| \( () ) -> Expect.equal("", String.trim("  \t  "))
-      , test("trimLeft 1") <| \( () ) -> Expect.equal("hello  ", String.trimLeft("  hello  "))
-      , test("trimLeft 2") <| \( () ) -> Expect.equal("", String.trimLeft("  \t  "))
-      , test("trimRight 1") <| \( () ) -> Expect.equal("  hello", String.trimRight("  hello  "))
-      , test("trimRight 2") <| \( () ) -> Expect.equal("", String.trimRight("  \t  "))
+      [ test("is empty") <| \( () ) => Expect.equal(True, String.isEmpty(""))
+      , test("is not empty") <| \( () ) => Expect.equal(True, not(String.isEmpty("the world")))
+      , test("length") <| \( () ) => Expect.equal(11, String.length("innumerable"))
+      , test("startsWith") <| \( () ) => Expect.equal(True, String.startsWith("space", "spaceship"))
+      , test("endsWith") <| \( () ) => Expect.equal(True, String.endsWith("ship", "spaceship"))
+      , test("reverse") <| \( () ) => Expect.equal("desserts", String.reverse("stressed"))
+      , test("repeat") <| \( () ) => Expect.equal("hahaha", String.repeat(3, "ha"))
+      , test("indices") <| \( () ) => Expect.equal([ 0, 1, 4 ], String.indices("aa", "aaahaa"))
+      , test("empty indices") <| \( () ) => Expect.equal([], String.indices("", "aha"))
+      , test("\"hello\" <> \"world\"") <| \( () ) => Expect.equal("helloworld", "hello" <> "world")
+      , test("toUpper") <| \( () ) => Expect.equal("HELLO", String.toUpper("hello"))
+      , test("toLower") <| \( () ) => Expect.equal("hello", String.toLower("HELLO"))
+      , test("trim 1") <| \( () ) => Expect.equal("hello", String.trim("  hello  "))
+      , test("trim 2") <| \( () ) => Expect.equal("", String.trim("  \t  "))
+      , test("trimLeft 1") <| \( () ) => Expect.equal("hello  ", String.trimLeft("  hello  "))
+      , test("trimLeft 2") <| \( () ) => Expect.equal("", String.trimLeft("  \t  "))
+      , test("trimRight 1") <| \( () ) => Expect.equal("  hello", String.trimRight("  hello  "))
+      , test("trimRight 2") <| \( () ) => Expect.equal("", String.trimRight("  \t  "))
       ]
 
     , describe("Combining Strings") <|
-      [ test("uncons non-empty") <| \( () ) -> Expect.equal(Just(( 'a', "bc" )), String.uncons("abc"))
-      , test("uncons empty") <| \( () ) -> Expect.equal(Nothing, String.uncons(""))
-      , test("append 1") <| \( () ) -> Expect.equal("butterfly", String.append("butter", "fly"))
-      , test("append 2") <| \( () ) -> Expect.equal("butter", String.append("butter", ""))
-      , test("append 3") <| \( () ) -> Expect.equal("butter", String.append("", "butter"))
-      , test("concat") <| \( () ) -> Expect.equal("nevertheless", String.concat([ "never", "the", "less" ]))
-      , test("split commas") <| \( () ) -> Expect.equal([ "cat", "dog", "cow" ], String.split(",", "cat,dog,cow"))
-      , test("split slashes") <| \( () ) -> Expect.equal([ "home", "sergey", "Desktop", "" ], String.split("/", "home/sergey/Desktop/"))
-      , test("join spaces") <| \( () ) -> Expect.equal("cat dog cow", String.join(" ", [ "cat", "dog", "cow" ]))
-      , test("join slashes") <| \( () ) -> Expect.equal("home/sergey/Desktop", String.join("/", [ "home", "sergey", "Desktop" ]))
-      , test("slice 1") <| \( () ) -> Expect.equal("c", String.slice(2, 3, "abcd"))
-      , test("slice 2") <| \( () ) -> Expect.equal("abc", String.slice(0, 3, "abcd"))
-      , test("slice 3") <| \( () ) -> Expect.equal("abc", String.slice(0, -1, "abcd"))
-      , test("slice 4") <| \( () ) -> Expect.equal("cd", String.slice(-2, 4, "abcd"))
-      , test("words") <| \( () ) -> Expect.equal([ "cat", "dog", "cow" ], String.words("cat  dog\tcow"))
-      , test("lines") <| \( () ) -> Expect.equal([ "cat", "dog", "cow", "zebra", "wolf" ], String.lines("cat\ndog\rcow\n\rzebra\r\nwolf"))
+      [ test("uncons non-empty") <| \( () ) => Expect.equal(Just(( 'a', "bc" )), String.uncons("abc"))
+      , test("uncons empty") <| \( () ) => Expect.equal(Nothing, String.uncons(""))
+      , test("append 1") <| \( () ) => Expect.equal("butterfly", String.append("butter", "fly"))
+      , test("append 2") <| \( () ) => Expect.equal("butter", String.append("butter", ""))
+      , test("append 3") <| \( () ) => Expect.equal("butter", String.append("", "butter"))
+      , test("concat") <| \( () ) => Expect.equal("nevertheless", String.concat([ "never", "the", "less" ]))
+      , test("split commas") <| \( () ) => Expect.equal([ "cat", "dog", "cow" ], String.split(",", "cat,dog,cow"))
+      , test("split slashes") <| \( () ) => Expect.equal([ "home", "sergey", "Desktop", "" ], String.split("/", "home/sergey/Desktop/"))
+      , test("join spaces") <| \( () ) => Expect.equal("cat dog cow", String.join(" ", [ "cat", "dog", "cow" ]))
+      , test("join slashes") <| \( () ) => Expect.equal("home/sergey/Desktop", String.join("/", [ "home", "sergey", "Desktop" ]))
+      , test("slice 1") <| \( () ) => Expect.equal("c", String.slice(2, 3, "abcd"))
+      , test("slice 2") <| \( () ) => Expect.equal("abc", String.slice(0, 3, "abcd"))
+      , test("slice 3") <| \( () ) => Expect.equal("abc", String.slice(0, -1, "abcd"))
+      , test("slice 4") <| \( () ) => Expect.equal("cd", String.slice(-2, 4, "abcd"))
+      , test("words") <| \( () ) => Expect.equal([ "cat", "dog", "cow" ], String.words("cat  dog\tcow"))
+      , test("lines") <| \( () ) => Expect.equal([ "cat", "dog", "cow", "zebra", "wolf" ], String.lines("cat\ndog\rcow\n\rzebra\r\nwolf"))
       ]
 
     , describe("String.toInt") <|
@@ -74,29 +74,29 @@ def tests: Test =
       ]
 
     , describe("UTF-16 Encoding") <|
-      [ test("reverse 1") <| \( () ) -> Expect.equal("𝌆c𝌆b𝌆a𝌆", String.reverse("𝌆a𝌆b𝌆c𝌆"))
-      , test("reverse 2") <| \( () ) -> Expect.equal("nàm", String.reverse("màn"))
-      , test("reverse 3") <| \( () ) -> Expect.equal("😣ba", String.reverse("ab😣"))
-      , test("filter") <| \( () ) -> Expect.equal("mànabc", String.filter(\(c) -> c != '😣', "màn😣abc"))
-      , test("toList") <| \( () ) -> Expect.equal(['𝌆', 'a', '𝌆', 'b', '𝌆'], String.toList("𝌆a𝌆b𝌆"))
-      , test("uncons") <| \( () ) -> Expect.equal(Just(( '😃', "bc" )), String.uncons("😃bc"))
-      , test("map 1") <| \( () ) -> Expect.equal("aaa", String.map(\(_) -> 'a', "😃😃😃"))
-      , test("map 2") <| \( () ) -> Expect.equal("😃😃😃", String.map(\(_) -> '😃', "aaa"))
-      , test("foldl") <| \( () ) -> Expect.equal(3, String.foldl(\(_, c) -> c + 1, 0, "😃😃😃"))
-      , test("foldr") <| \( () ) -> Expect.equal(3, String.foldr(\(_, c) -> c + 1, 0, "😃😃😃"))
-      , test("all") <| \( () ) -> Expect.equal(True, String.all((==)('😃'), "😃😃😃"))
-      , test("any") <| \( () ) -> Expect.equal(True, String.any((==)('😃'), "abc😃123"))
+      [ test("reverse 1") <| \( () ) => Expect.equal("𝌆c𝌆b𝌆a𝌆", String.reverse("𝌆a𝌆b𝌆c𝌆"))
+      , test("reverse 2") <| \( () ) => Expect.equal("nàm", String.reverse("màn"))
+      , test("reverse 3") <| \( () ) => Expect.equal("😣ba", String.reverse("ab😣"))
+      , test("filter") <| \( () ) => Expect.equal("mànabc", String.filter(\(c) => c != '😣', "màn😣abc"))
+      , test("toList") <| \( () ) => Expect.equal(['𝌆', 'a', '𝌆', 'b', '𝌆'], String.toList("𝌆a𝌆b𝌆"))
+      , test("uncons") <| \( () ) => Expect.equal(Just(( '😃', "bc" )), String.uncons("😃bc"))
+      , test("map 1") <| \( () ) => Expect.equal("aaa", String.map(\(_) => 'a', "😃😃😃"))
+      , test("map 2") <| \( () ) => Expect.equal("😃😃😃", String.map(\(_) => '😃', "aaa"))
+      , test("foldl") <| \( () ) => Expect.equal(3, String.foldl(\(_, c) => c + 1, 0, "😃😃😃"))
+      , test("foldr") <| \( () ) => Expect.equal(3, String.foldr(\(_, c) => c + 1, 0, "😃😃😃"))
+      , test("all") <| \( () ) => Expect.equal(True, String.all((==)('😃'), "😃😃😃"))
+      , test("any") <| \( () ) => Expect.equal(True, String.any((==)('😃'), "abc😃123"))
       ]
     ]
 
-def goodInt(str: String, int: Int): Test =
-  test(str) <| \(_) -> Expect.equal(Just(int), String.toInt(str))
+def goodInt(str: String, int: Int) -> Test =
+  test(str) <| \(_) => Expect.equal(Just(int), String.toInt(str))
 
-def badInt(str: String): Test =
-  test(str) <| \(_) -> Expect.equal(Nothing, String.toInt(str))
+def badInt(str: String) -> Test =
+  test(str) <| \(_) => Expect.equal(Nothing, String.toInt(str))
 
-def goodFloat(str: String, float: Float): Test =
-  test(str) <| \(_) -> Expect.equal(Just(float), String.toFloat(str))
+def goodFloat(str: String, float: Float) -> Test =
+  test(str) <| \(_) => Expect.equal(Just(float), String.toFloat(str))
 
-def badFloat(str: String): Test =
-  test(str) <| \(_) -> Expect.equal(Nothing, String.toFloat(str))
+def badFloat(str: String) -> Test =
+  test(str) <| \(_) => Expect.equal(Nothing, String.toFloat(str))
