@@ -1,4 +1,4 @@
-module Tests.Nar.Base.List
+module Nar.Base.Tests.List
 
 import Nar.Base.List exposing *
 

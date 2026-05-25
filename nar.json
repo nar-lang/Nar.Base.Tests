@@ -1,8 +1,8 @@
 {
   "name": "Nar.Base.Tests",
   "repository": "github.com/nar-lang/Nar.Base.Tests",
-  "dependencies": [
-    "github.com/nar-lang/Nar.Base",
-    "github.com/nar-lang/Nar.Tests"
-  ]
+  "dependencies": {
+    "Nar.Base": "github.com/nar-lang/Nar.Base",
+    "Nar.Tests": "github.com/nar-lang/Nar.Tests"
+  }
 }

@@ -1,4 +1,4 @@
-module Tests.Nar.Base.Math
+module Nar.Base.Tests.Math
 
 import Nar.Base.Math exposing *
 

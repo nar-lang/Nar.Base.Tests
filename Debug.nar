@@ -1,4 +1,4 @@
-module Tests.Nar.Base.Debug
+module Nar.Base.Tests.Debug
 
 import Nar.Base.Debug exposing (toString)
 

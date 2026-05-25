@@ -1,4 +1,4 @@
-module Tests.Nar.Base.String
+module Nar.Base.Tests.String
 
 def tests: Test =
   describe("String") <|

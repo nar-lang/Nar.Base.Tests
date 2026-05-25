@@ -1,4 +1,4 @@
-module Tests.Nar.Base.Result
+module Nar.Base.Tests.Result
 
 def isEven(n) =
   if modBy(2, n) == 0 then

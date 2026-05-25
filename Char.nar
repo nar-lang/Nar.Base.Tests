@@ -1,4 +1,4 @@
-module Tests.Nar.Base.Char
+module Nar.Base.Tests.Char
 
 import Nar.Base.Char exposing *
 

@@ -1,4 +1,4 @@
-module Tests.Nar.Base.Array
+module Nar.Base.Tests.Array
 
 import Nar.Base.Array exposing *
 
