@@ -13,10 +13,10 @@ def tests: Test =
         ]
 
 def testListOfN(n: Int) -> Test =
-    let xs = List.range(1, n)
-    let xsOpp = List.range(-n, -1)
+    let xs = range(1, n)
+    let xsOpp = range(-n, -1)
     let xsNeg = foldl((|), [], xsOpp)
-    let zs = List.range(0, n)
+    let zs = range(0, n)
     let sumSeq(k) = k * (k + 1) / 2
     let xsSum = sumSeq(n)
     let mid = n / 2
@@ -32,7 +32,7 @@ def testListOfN(n: Int) -> Test =
             ]
         , describe("map") <|
             [ test("identity") <| \( () ) => Expect.equal(xs, map(identity, xs))
-            , test("linear") <| \( () ) => Expect.equal(List.range(2, n + 1), map(add(1), xs))
+            , test("linear") <| \( () ) => Expect.equal(range(2, n + 1), map(Math.add(1), xs))
             ]
         , test("isEmpty") <| \( () ) => Expect.equal(n == 0, isEmpty(xs))
         , test("length") <| \( () ) => Expect.equal(n, length(xs))
@@ -47,14 +47,14 @@ def testListOfN(n: Int) -> Test =
                     Expect.equal(Nothing, head(xs))
                 else
                     Expect.equal(Just(1), head(xs))
-        , describe("List.filter") <|
-            [ test("none") <| \( () ) => Expect.equal([], List.filter(\(x) => x > n, xs))
-            , test("one") <| \( () ) => Expect.equal([n], List.filter (\(z) => z == n, zs))
-            , test("all") <| \( () ) => Expect.equal(xs, List.filter (\(x) => x <= n, xs))
+        , describe("filter") <|
+            [ test("none") <| \( () ) => Expect.equal([], filter(\(x) => x > n, xs))
+            , test("one") <| \( () ) => Expect.equal([n], filter (\(z) => z == n, zs))
+            , test("all") <| \( () ) => Expect.equal(xs, filter (\(x) => x <= n, xs))
             ]
         , describe("take") <|
             [ test("none") <| \( () ) => Expect.equal([], take(0, xs))
-            , test("some") <| \( () ) => Expect.equal(List.range(0, n - 1), take(n, zs))
+            , test("some") <| \( () ) => Expect.equal(range(0, n - 1), take(n, zs))
             , test("all") <| \( () ) => Expect.equal(xs, take(n, xs))
             , test("all+") <| \( () ) => Expect.equal(xs, take(n + 1, xs))
             ]
@@ -67,7 +67,7 @@ def testListOfN(n: Int) -> Test =
         , test("repeat") <| \( () ) => Expect.equal(map(\(x) => -1, xs), repeat(n, -1))
         , test("append") <| \( () ) => Expect.equal(xsSum * 2, append(xs, xs) |> foldl((+), 0))
         , test("(::)") <| \( () ) => Expect.equal(append([-1], xs), -1 | xs)
-        , test("List.concat") <| \( () ) => Expect.equal(append(xs, append(zs, xs)), List.concat([ xs, zs, xs ]))
+        , test("concat") <| \( () ) => Expect.equal(append(xs, append(zs, xs)), concat([ xs, zs, xs ]))
         , test("intersperse") <|
             \( () ) =>
                 Expect.equal(
@@ -76,10 +76,10 @@ def testListOfN(n: Int) -> Test =
         , describe("partition") <|
             [ test("left") <| \( () ) => Expect.equal(( xs, [] ), partition(\(x) => x > 0, xs))
             , test("right") <| \( () ) => Expect.equal(( [], xs ), partition(\(x) => x < 0, xs))
-            , test("split") <| \( () ) => Expect.equal( ( List.range(mid + 1, n), List.range(1, mid) ) , partition(\(x) => x > mid, xs) )
+            , test("split") <| \( () ) => Expect.equal( ( range(mid + 1, n), range(1, mid) ) , partition(\(x) => x > mid, xs) )
             ]
         , describe("map2") <|
-            [ test("same length") <| \( () ) => Expect.equal(map(mul(2), xs), map2((+), xs, xs))
+            [ test("same length") <| \( () ) => Expect.equal(map(Math.mul(2), xs), map2((+), xs, xs))
             , test("long first") <| \( () ) => Expect.equal(map(\(x) => x * 2 - 1, xs), map2((+), zs, xs))
             , test("short first") <| \( () ) => Expect.equal(map(\(x) => x * 2 - 1, xs), map2((+), xs, zs))
             ]
@@ -88,7 +88,7 @@ def testListOfN(n: Int) -> Test =
             [ test("none") <| \( () ) => Expect.equal([], filterMap(\(x) => Nothing, xs))
             , test("all") <| \( () ) => Expect.equal(xsNeg, filterMap(\(x) => Just(-x), xs))
             , let halve(x) = if modBy(2, x) == 0 then Just(x/2) else Nothing
-              in test("some") <| \( () ) => Expect.equal(List.range(1, mid), filterMap(halve, xs))
+              in test("some") <| \( () ) => Expect.equal(range(1, mid), filterMap(halve, xs))
             ]
         , describe("concatMap") <|
             [ test("none") <| \( () ) => Expect.equal([], concatMap(\(x) => [], xs))
@@ -122,8 +122,8 @@ def testListOfN(n: Int) -> Test =
             , test("unsorted") <| \( () ) => Expect.equal(xsOpp, sort(xsNeg))
             ]
         , describe("sortBy") <|
-            [ test("sorted") <| \( () ) => Expect.equal(xsNeg, sortBy(neg, xsNeg))
-            , test("unsorted") <| \( () ) => Expect.equal(xsNeg, sortBy(neg, xsOpp))
+            [ test("sorted") <| \( () ) => Expect.equal(xsNeg, sortBy(Math.neg, xsNeg))
+            , test("unsorted") <| \( () ) => Expect.equal(xsNeg, sortBy(Math.neg, xsOpp))
             ]
         , describe("sortWith") <|
             [ test("sorted") <| \( () ) => Expect.equal(xsNeg, sortWith(\(x) => \(y) => compare(y, x), xsNeg))
